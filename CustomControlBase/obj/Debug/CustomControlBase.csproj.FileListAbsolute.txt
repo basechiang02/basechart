@@ -1,0 +1,6 @@
+C:\Users\base\source\repos\baseChart\CustomControlBase\bin\Debug\CustomControlBase.dll
+C:\Users\base\source\repos\baseChart\CustomControlBase\bin\Debug\CustomControlBase.pdb
+C:\Users\base\source\repos\baseChart\CustomControlBase\obj\Debug\CustomControlBase.csproj.CoreCompileInputs.cache
+C:\Users\base\source\repos\baseChart\CustomControlBase\obj\Debug\CustomControlBase.dll
+C:\Users\base\source\repos\baseChart\CustomControlBase\obj\Debug\CustomControlBase.pdb
+C:\Users\base\source\repos\baseChart\CustomControlBase\obj\Debug\CustomControlBase.csprojAssemblyReference.cache

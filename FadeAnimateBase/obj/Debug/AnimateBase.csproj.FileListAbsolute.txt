@@ -1,0 +1,8 @@
+C:\Users\base\source\repos\baseChart\FadeAnimateBase\bin\Debug\AnimateBase.dll
+C:\Users\base\source\repos\baseChart\FadeAnimateBase\bin\Debug\AnimateBase.pdb
+C:\Users\base\source\repos\baseChart\FadeAnimateBase\obj\Debug\AnimateBase.csproj.CoreCompileInputs.cache
+C:\Users\base\source\repos\baseChart\FadeAnimateBase\obj\Debug\AnimateBase.dll
+C:\Users\base\source\repos\baseChart\FadeAnimateBase\obj\Debug\AnimateBase.pdb
+C:\Users\base\source\repos\baseChart\FadeAnimateBase\obj\Debug\AnimateBase.csprojAssemblyReference.cache
+C:\Users\base\source\repos\baseChart\FadeAnimateBase\obj\Debug\AnimateBase.AnimateBaseManager.resources
+C:\Users\base\source\repos\baseChart\FadeAnimateBase\obj\Debug\AnimateBase.csproj.GenerateResource.cache
