@@ -23,20 +23,12 @@ namespace baseChart
         public MainForm()
         {
             InitializeComponent();
-
-           
-
         }
 
         private void toolStripbtnCreate_Click(object sender, EventArgs e)
         {
             if (dataForm == null || dataForm.IsDisposed)
             {
-                /*
-                dataForm = new DataCreateForm(this);
-                this.AddOwnedForm(dataForm);
-
-                dataForm.Show();*/
                 dataForm = new DataCreateForm(this);
                 dataForm.ShowDialog();
                 dataForm = null;
@@ -60,13 +52,6 @@ namespace baseChart
            //  StoreDataHelper.ImportDefaultStoreData(doc, "default");
           
             StoreDataList = StoreDataHelper.GetStoreDataListFromXmlDocument(doc, XmlStoreName);
-           // StoreDataList.Sort((t1, t2) =>  t2.Id.CompareTo(t1.Id)  );
-
-            /*foreach (var tmp in StoreDataList)
-            {
-                Console.WriteLine("Id:"+ tmp.Id);
-            }*/
-            //Console.WriteLine(doc.DocumentElement.Name);
         }
 
 
@@ -128,49 +113,95 @@ namespace baseChart
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadData();
-           // ChartDataOperator();
+            ShowChart(ChartStoreDataViewType.Last10Days);
         }
 
-        protected void ChartDataOperator()
+        private void ShowChartLast10Days()
         {
-            if(StoreDataList?.Count >0)
+           
+            if (StoreDataList?.Count > 0)
             {
-                DateTime baseDate = new DateTime(2022, 4, 25);
+                DateTime baseDate = new DateTime(StoreDataList.Max(item => DateTime.ParseExact(item.Date, "yyyy/MM/dd", null).Ticks));
                 DateTime diffDate;
                 List<StoreData> list;
-                double days = 10; 
+                double days = 10.0;
+                double sum = 0.0;
+                double avg = 0.0;
 
                 list = StoreDataList.FindAll((st) => {
-                    try { 
-                    diffDate = DateTime.ParseExact(st.Date, "yyyy/MM/dd",null);
-                    if((diffDate - baseDate).TotalDays < days)
-                        return true;
+                    try
+                    {
+                        diffDate = DateTime.ParseExact(st.Date, "yyyy/MM/dd", null);
+                        if (Math.Abs((diffDate - baseDate).TotalDays) < days)
+                            return true;
                     }
                     catch (Exception) { }
-                     
+
                     return false;
-                    
+
                 });
-                
-                foreach (StoreData item in list)
+             
+                foreach (StoreData item in list.OrderBy(item => item.Date))
                 {
-                    //chartStoreData.Series[0].Points.AddXY(item.Date,item.CustomerCount);
-                  
-                    //chartStoreData.Series[0].ChartArea = "test";
+                    sum += item.CustomerCount;
+                    chartStoreData.Series[0].Points.AddXY(item.Date, item.CustomerCount);
                 }
+                avg = sum / list.Count;
+                lblStoreDataInfo.Text = string.Format("客人統計\r\n\r\n總數:{0}\r\n平均人數:{1}", sum, avg);
+            }
+        }
+        protected void ShowChartRecent10Data()
+        {
+            if (StoreDataList?.Count > 0)
+            {
+                List<StoreData> list = StoreDataList;
+                int maxcount = 10;
+                int firstIndex=0;
+                double sum = 0.0;
+                double avg = 0.0;
+                if (list.Count > maxcount)
+                    firstIndex = list.Count - maxcount;
+
+                for(int i = firstIndex; i < list.Count; i++)
+                {
+                    sum += list[i].CustomerCount;
+                    chartStoreData.Series[0].Points.AddXY(list[i].Date, list[i].CustomerCount);
+                }
+                if (firstIndex <= 0)
+                    avg = sum / list.Count;
+                else
+                    avg = sum / maxcount;
+
+                lblStoreDataInfo.Text = string.Format("客人統計\r\n\r\n總數:{0}\r\n平均人數:{1}",sum,avg);
 
             }
-
-
-
         }
-
+        protected void ShowChart(ChartStoreDataViewType chartStoreDataViewType)
+        {
+            lblStoreDataInfo.Text = "";
+            chartStoreData.Series[0].Points.Clear();
+            if (chartStoreDataViewType == ChartStoreDataViewType.Last10Days)
+                ShowChartLast10Days();
+            else if (chartStoreDataViewType == ChartStoreDataViewType.Recent10Data)
+                ShowChartRecent10Data();
+        }
         private void toolStripButtonTest_Click(object sender, EventArgs e)
         {
             new TestForm().ShowDialog(this);
         }
+
+        private void btnLast10Days_Click(object sender, EventArgs e)
+        {
+            ShowChart(ChartStoreDataViewType.Last10Days);
+        }
+
+        private void btnRecent10Data_Click(object sender, EventArgs e)
+        {
+            ShowChart(ChartStoreDataViewType.Recent10Data);
+        }
     }
-
-    
-
+    public enum ChartStoreDataViewType{
+        Last10Days,
+        Recent10Data
+    }
 }

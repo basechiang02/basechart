@@ -149,9 +149,18 @@ namespace baseChart
             }
 
             List<StoreData> StoreDataList = new List<StoreData> {
-                                new StoreData(i++,"2020/04/21",10),
-                                new StoreData(i++,"2020/04/20",20),
-                                new StoreData(i++,"2020/04/19",30),
+                                new StoreData(i++,"2020/04/18",10),
+                                new StoreData(i++,"2020/04/19",20),
+                                new StoreData(i++,"2020/04/20",30),
+                                new StoreData(i++,"2020/04/21",40),
+                                new StoreData(i++,"2020/04/22",40),
+                                new StoreData(i++,"2020/04/23",40),
+                                new StoreData(i++,"2020/04/24",40),
+                                new StoreData(i++,"2020/04/25",40),
+                                new StoreData(i++,"2020/04/26",40),
+                                new StoreData(i++,"2020/04/27",40),
+                                new StoreData(i++,"2020/04/28",40),
+                                new StoreData(i++,"2020/04/29",40),
                             };
 
             foreach (StoreData sd in StoreDataList)

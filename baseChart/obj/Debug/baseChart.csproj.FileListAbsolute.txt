@@ -9,11 +9,11 @@ C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.csprojAssembl
 C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.DataCreateForm.resources
 C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.MainForm.resources
 C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.Properties.Resources.resources
+C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.SearchForm.resources
+C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.TestForm.resources
+C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.UpdateUI.resources
 C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.csproj.GenerateResource.cache
 C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.csproj.CoreCompileInputs.cache
 C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.csproj.CopyComplete
 C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.exe
 C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.pdb
-C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.UpdateUI.resources
-C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.SearchForm.resources
-C:\Users\base\source\repos\baseChart\baseChart\obj\Debug\baseChart.TestForm.resources
