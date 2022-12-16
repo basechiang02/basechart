@@ -11,8 +11,6 @@ namespace AnimateBase
     {
         protected Control m_AnimatedControl;
         protected Timer m_Timer;
-        //public delegate void PostAnimateEventHandler(object sender, AnimateBaseEventArg e);
-
         public event EventHandler<AnimateBaseEventArg> PostAnimateEvent;
         private bool IsEnd;
         public bool IsRunning{ get => isRunning(); }
@@ -20,12 +18,6 @@ namespace AnimateBase
         {
             get => m_AnimatedControl;
         }
-
-      /*  public bool IsRun
-        {
-            get => m_Timer.Enabled;
-        }*/
-
         public AnimateBase(Control l_AnimatedControl)
         {
             init(l_AnimatedControl);
@@ -47,7 +39,6 @@ namespace AnimateBase
                 EndSetting();
             if (IsEnd)
             {
-               // Debug.WriteLine("before call PostAnimateEvent");
                 PostAnimateEvent?.Invoke(this, new AnimateBaseEventArg(this.m_AnimatedControl));
                 EndProcess();
             }
@@ -85,23 +76,18 @@ namespace AnimateBase
         {
             
         }
-
         public void StopAnimatie()
         {
             IsEnd = true;
             m_Timer.Stop();
         }
         private bool isRunning() => m_Timer?.Enabled ?? false;
-
-
     }
 
     public class AnimateBaseEventArg
     {
         public Control m_AnimatedControl;
         public AnimateBaseEventArg(Control l_AnimatedControl) => m_AnimatedControl = l_AnimatedControl;
-
-
     }
 
 

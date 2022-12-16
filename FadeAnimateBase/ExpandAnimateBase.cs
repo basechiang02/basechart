@@ -33,20 +33,16 @@ namespace AnimateBase
 
     public class ExpandAnimateBase : AnimateBase
     {
-       // protected Control AnimatedSourceObject;
-      //  protected int AnimatedSourceObject_Alpha;
-      //  protected int AnimatedSourceObject_CurrrentAlpha;
-      //  protected Timer timer;
+
         private ExpandAnimateBaseEffect _CurrentEffectType;
         protected int ControlHeightWidth;
         protected int CurrentControlHeightWidth;
         private int Increment;
         private int DefaultIncrement = 25;
         protected ExpandAnimateBaseEffect CurrentEffectType { get => _CurrentEffectType; set=> _CurrentEffectType = value; }
-      //  public const int CONTROL_ALPHA_MAX = 255;
         public const int CONTROL_HEIGHT_MIN = 0;
         public const int CONTROL_WIDTH_MIN = 0;
-        public bool ControlShow=false;
+        public bool ControlShow = false;
         private ExpandAnimateBaseEffectDirection _direction;
         public ExpandAnimateBaseEffectDirection Direction {
                                                     get => this._direction;
@@ -88,12 +84,8 @@ namespace AnimateBase
 
         public ExpandAnimateBase(Control animatedobject,ExpandAnimateBaseEffect effectType) :base(animatedobject)
         {
-            
             this.Direction = ExpandAnimateBaseEffectDirection.UpDown;
             Init(animatedobject, effectType);
-
-            //    timer_init(50);
-            // AnimatedSourceObject.BackColor = Color.FromArgb(0, AnimatedSourceObject.BackColor);
         }
         public ExpandAnimateBase(Control animatedobject, ExpandAnimateBaseEffect effectType, ExpandAnimateBaseEffectDirection direction) : base(animatedobject)
         {
@@ -120,8 +112,6 @@ namespace AnimateBase
                 else
                     Callaspe_Tick_Process();
             }
-            // Debug.WriteLine("Current a:{0}", CurrrentControlAlpha);
-            //  Console.WriteLine("current :" + CurrentControlHeightWidth);
             if (this.Direction == ExpandAnimateBaseEffectDirection.UpDown)
                 m_AnimatedControl.Height = CurrentControlHeightWidth;
             else if (this.Direction == ExpandAnimateBaseEffectDirection.LeftRight)
@@ -131,8 +121,6 @@ namespace AnimateBase
             {
                 m_AnimatedControl.Show();
             }
-
-            //  m_AnimatedControl.Invalidate();
         }
 
         protected override bool IsEndProcess()
@@ -152,23 +140,18 @@ namespace AnimateBase
 
         protected void Init(Control animatedobject, ExpandAnimateBaseEffect effectType)
         {
-         
-            //CurrrentControlAlpha = ControlAlpha;
-           
             _CurrentEffectType = effectType;
-           // ControlColor = new Color();
             
             Increment = DefaultIncrement;
 
             m_ExpandAnimateToggle = this.m_AnimatedControl.Visible;
-           // m_Timer.Interval = 500;
         }
 
         protected override void EndSetting()
         {
             base.EndSetting();
             CurrentControlHeightWidth = ControlHeightWidth;
-            //m_AnimatedControl.BackColor = Color.FromArgb(CurrrentControlAlpha, m_AnimatedControl.BackColor);
+          
             if(this.Direction == ExpandAnimateBaseEffectDirection.UpDown)
                 m_AnimatedControl.Height = ControlHeightWidth;
             else if(this.Direction == ExpandAnimateBaseEffectDirection.LeftRight)
@@ -195,8 +178,6 @@ namespace AnimateBase
                 else
                     m_AnimatedControl.Hide();
             }
-            
-            //AnimatedControl.Invalidate();
         }
         protected void Expand_Init()
         {
@@ -257,7 +238,6 @@ namespace AnimateBase
         protected override void CalculateArgment()
         {
             base.CalculateArgment();
-            //m_Timer.Interval = 80;
             if(this.Direction == ExpandAnimateBaseEffectDirection.UpDown)
             {
                 Increment = m_AnimatedControl.Height / 12;
@@ -304,12 +284,6 @@ namespace AnimateBase
             else if (this.Direction == ExpandAnimateBaseEffectDirection.UpDown)
                 m_AnimatedControl.Width = CurrentControlHeightWidth;
             ControlShow = m_AnimatedControl.Visible;
-
-          /*  if (!m_AnimatedControl.Visible)
-            {
-                m_AnimatedControl.Show();
-            }*/
-                
         }
 
     }

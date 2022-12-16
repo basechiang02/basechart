@@ -10,12 +10,16 @@ namespace AnimateBase
 {
     public partial class AnimateBaseManager : Component
     {
-        protected List<AnimateBase> ManagedItem; 
+        protected List<AnimateBase> ManagedItem;
+        public bool IgnoreWaiting
+        {
+            set;
+            get;
+        } = false;
         public AnimateBaseManager()
         {
             InitializeComponent();
             ManagedItem = new List<AnimateBase>();
-            
         }
 
         public AnimateBaseManager(IContainer container)
@@ -41,11 +45,7 @@ namespace AnimateBase
         {
             if (animateBase != null)
             {
-                /*int index = 0;
-                index = this.ManagedItem.FindIndex((item) => item == animateBase);
-                if (index >= 0)*/
                 this.ManagedItem.Remove(animateBase);
-
             }
         }
 
@@ -56,13 +56,17 @@ namespace AnimateBase
             {
                 bool waiting = false;
                 List<AnimateBase> FoundItems;
+                // find front ones
                 FoundItems = this.ManagedItem.FindAll((item) => {
                     if (item.AnimatedControl == animateBase.AnimatedControl
-                        && item.IsRunning)
+                        && item.IsRunning
+                    )
                             return true;
                     return false;
                                 });
-
+                if (this.IgnoreWaiting && FoundItems?.Count > 0)
+                    return;
+                // wait front ones end
                 do
                 {
                     waiting = false;

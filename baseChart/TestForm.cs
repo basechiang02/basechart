@@ -40,24 +40,6 @@ namespace baseChart
             animateBaseManager1.Add(b);
             animateBaseManager1.Add(c);
             animateBaseManager1.Add(d);
-
-
-            /*    this.SetStyle(ControlStyles.DoubleBuffer |
-         ControlStyles.UserPaint |
-         ControlStyles.AllPaintingInWmPaint,
-         true);
-                this.UpdateStyles();*/
-
-            //   SetDoubleBuffered(panelLeft);
-            /* b.PostAnimateEvent += (o, e) => {
-                 if (panelLeft.Visible)
-                     panelLeft.Hide();
-                 else
-                     panelLeft.Show();
-                 };
-                 */
-
-            // button1.Text = System.Net.WebUtility.HtmlDecode("\u2630");
         }
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)
         {
@@ -76,29 +58,21 @@ namespace baseChart
         private async void button1_Click(object sender, EventArgs e)
         {
             await animateBaseManager1.Run(b);
-
-           // b.RunAnimatie();
         }
 
         private async void button2_Click(object sender, EventArgs e)
         {
             await animateBaseManager1.Run(a);
-
-            //   a.RunAnimatie();
         }
 
         private async void button3_Click(object sender, EventArgs e)
         {
             await animateBaseManager1.Run(c);
-            // c.RunAnimatie();
-            //Console.WriteLine("b3 trigger " + DateTime.Now.Second *1000 + DateTime.Now.Millisecond );
         }
 
-        private  void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e)
         {
-             animateBaseManager1.Run(d);
-           // Console.WriteLine("b4 trigger " + DateTime.Now.Second * 1000 + DateTime.Now.Millisecond);
-            //d.RunAnimatie();
+            await animateBaseManager1.Run(d);
         }
     }
 }

@@ -68,16 +68,11 @@ namespace AnimateBase
 
         public FadeAnimateBase(Control animatedobject,FadeAnimateBaseEffect effectType) :base(animatedobject)
         {
-          
             Init(animatedobject, effectType);
-            //    timer_init(50);
-            // AnimatedSourceObject.BackColor = Color.FromArgb(0, AnimatedSourceObject.BackColor);
         }
        
         protected override void RunProcess()
         {
-
-            // Debug.WriteLine("Current a:{0}", CurrrentControlAlpha);
             if (_CurrentEffectType == FadeAnimateBaseEffect.FadeIn)
             {
                 FadeIn_Tick_Process();
@@ -112,14 +107,11 @@ namespace AnimateBase
         protected void Init(Control animatedobject, FadeAnimateBaseEffect effectType)
         {
             ControlAlpha = animatedobject.BackColor.A;
-            //CurrrentControlAlpha = ControlAlpha;
            
             _CurrentEffectType = effectType;
-           // ControlColor = new Color();
             ControlColor = animatedobject.BackColor;
 
             m_FadeAnimateToggle = !this.m_AnimatedControl.Visible;
-           // m_Timer.Interval = 100;
             Increment = 15;
         }
 
@@ -127,7 +119,6 @@ namespace AnimateBase
         {
             base.EndSetting();
             CurrrentControlAlpha = ControlAlpha;
-            //m_AnimatedControl.BackColor = Color.FromArgb(CurrrentControlAlpha, m_AnimatedControl.BackColor);
             m_AnimatedControl.BackColor = ControlColor;
             if (AutoControlVisible)
             {
@@ -143,7 +134,6 @@ namespace AnimateBase
                     m_AnimatedControl.Hide();
                 }
             }
-          //  AnimatedControl.Invalidate();
         }
         protected void FadeIn_Init()
         {
@@ -188,7 +178,6 @@ namespace AnimateBase
         protected override void CalculateArgment()
         {
             base.CalculateArgment();
-            //m_Timer.Interval = 80;
             Increment = 30;
             if (CurrentEffectType == FadeAnimateBaseEffect.FadeIn)
             {
@@ -207,7 +196,6 @@ namespace AnimateBase
                 else
                     CurrrentControlAlpha = ControlAlpha;
             }
-
         }
 
     }
