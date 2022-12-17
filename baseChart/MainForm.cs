@@ -46,7 +46,11 @@ namespace baseChart
             }
             catch (System.IO.FileNotFoundException ex)
             {
-                LoadDefaultData(doc);
+                #if DEBUG
+                LoadDefaultData(doc, true);
+                #else
+                LoadDefaultData(doc, false);
+                #endif
                 doc.Save(DefaultDataFile);
             }
            //  StoreDataHelper.ImportDefaultStoreData(doc, "default");
@@ -57,13 +61,13 @@ namespace baseChart
 
 
 
-        protected void LoadDefaultData(XmlDocument doc)
+        protected void LoadDefaultData(XmlDocument doc, bool importDammyData = false)
         {
           
             doc=StoreDataHelper.CreateDefaultStoreData(doc);
             //doc = StoreDataHelper.AddNewStoreName(doc, "test");
-
-            StoreDataHelper.ImportDefaultStoreData(doc, "default");
+            if(importDammyData)
+                StoreDataHelper.ImportDefaultStoreData(doc, "default");
             //StoreDataHelper.ImportDefaultStoreData(doc, "test");
 
             doc.Save(DefaultDataFile);
@@ -127,7 +131,7 @@ namespace baseChart
                 double days = 10.0;
                 double sum = 0.0;
                 double avg = 0.0;
-
+               
                 list = StoreDataList.FindAll((st) => {
                     try
                     {
@@ -161,8 +165,8 @@ namespace baseChart
                 double avg = 0.0;
                 if (list.Count > maxcount)
                     firstIndex = list.Count - maxcount;
-
-                for(int i = firstIndex; i < list.Count; i++)
+          
+                for (int i = firstIndex; i < list.Count; i++)
                 {
                     sum += list[i].CustomerCount;
                     chartStoreData.Series[0].Points.AddXY(list[i].Date, list[i].CustomerCount);
